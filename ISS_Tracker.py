@@ -1,12 +1,17 @@
 import requests
 import json
 
-# Main function although only a generic API GET request used 
+# Main function simply a generic API GET request used 
 # by all functions
 # Converts binary response into Python object (List, Dict,...)
-def makeRequest(site):
+def makeRequest(url):
+    '''makeRequest(url) --> Returns a json response from ISS api
+
+    Parameters:
+    url: The api url to make the request on
+    '''
     try:
-        with requests.get(site) as res:
+        with requests.get(url) as res:
             if res.status_code in range(200, 300):
                 s = res.text
                 json_acceptable_string = s.replace("'", "\"")
